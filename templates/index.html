@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EduSchema</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to EduSchema</h1>
+        <ul>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('instructors') }}">Instructors</a></li>
+            <li><a href="{{ url_for('students') }}">Students</a></li>
+            <li><a href="{{ url_for('enrollments') }}">Enrollments</a></li>
+            <li><a href="{{ url_for('view_deleted') }}">Deleted Records</a></li>
+        </ul>
+    </div>
+</body>
+</html>

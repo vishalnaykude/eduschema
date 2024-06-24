@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enrollments</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Enrollments</h1>
+        <form action="{{ url_for('enroll_student') }}" method="post">
+            <label for="student_id">Student ID:</label>
+            <input type="text" id="student_id" name="student_id">
+            <label for="course_id">Course ID:</label>
+            <input type="text" id="course_id" name="course_id">
+            <input type="submit" value="Enroll Student">
+        </form>
+        <ul>
+            {% for enrollment in enrollments %}
+                <li>Student ID: {{ enrollment[1] }}, Course ID: {{ enrollment[2] }}, Progress: {{ enrollment[3] }}
+                    <form action="{{ url_for('delete_enrollment', enrollment_id=enrollment[0]) }}" method="post" class="inline">
+                        <input type="submit" value="Delete">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

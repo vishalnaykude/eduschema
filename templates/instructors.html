@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instructors</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Instructors</h1>
+        <form action="{{ url_for('add_instructor') }}" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio"></textarea>
+            <input type="submit" value="Add Instructor">
+        </form>
+        <ul>
+            {% for instructor in instructors %}
+                <li>{{ instructor[1] }} {{ instructor[2] }} - {{ instructor[3] }} - {{ instructor[4] }}
+                    <form action="{{ url_for('delete_instructor', instructor_id=instructor[0]) }}" method="post" class="inline">
+                        <input type="submit" value="Delete">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>
